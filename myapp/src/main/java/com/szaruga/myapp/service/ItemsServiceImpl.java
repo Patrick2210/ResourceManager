@@ -2,6 +2,7 @@ package com.szaruga.myapp.service;
 
 import com.szaruga.myapp.dao.ItemsRepository;
 import com.szaruga.myapp.entity.Items;
+import com.szaruga.myapp.myenum.MyEnumString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,8 @@ public class ItemsServiceImpl implements ItemsService {
         if (result.isPresent()) {
             theItem = result.get();
         } else {
-            throw new RuntimeException("Didn't find employee id - " + theId);
-            //TODO fix string
+            throw new RuntimeException(MyEnumString.ITEM.myString
+                    + MyEnumString.ID_NOT_FOUND.myString + theId);
         }
         return theItem;
     }
