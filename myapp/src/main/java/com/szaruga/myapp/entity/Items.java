@@ -1,5 +1,6 @@
 package com.szaruga.myapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class Items {
     private String metaData;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-
+    @JsonIgnore
     private Members theMember;
 
     public Items() {
