@@ -62,4 +62,4 @@ REST api should be made available to perform the following operations:
 - editing the user's nickname
 - adding a resource (must be assigned to a specific user)
 - deleting a resource
-- editing resource name and metadata (JSON
+- editing resource name and metadata (JSON)
