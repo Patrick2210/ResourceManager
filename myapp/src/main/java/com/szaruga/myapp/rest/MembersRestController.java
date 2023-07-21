@@ -21,12 +21,12 @@ public class MembersRestController {
 
     @GetMapping("/members")
     public List<Members> findAll() {
-        return memberService.findAll();
+        return memberService.findAllMembers();
     }
 
     @GetMapping("/members/{membersId}")
     public Members getMember(@PathVariable int membersId) {
-        Members theMember = memberService.findById(membersId);
+        Members theMember = memberService.findMemberById(membersId);
         if (theMember == null) {
             throw new RuntimeException(MyStrings.MEMBER.myString +
                     MyStrings.ID_NOT_FOUND.myString + membersId);
@@ -37,17 +37,17 @@ public class MembersRestController {
     @PostMapping("/members")
     public Members addMember(@RequestBody Members theMember) {
         theMember.setId(0);
-        return memberService.save(theMember);
+        return memberService.saveMember(theMember);
     }
 
     @DeleteMapping("/members/{membersId}")
     public String deleteMember(@PathVariable int membersId) {
-        Members theUser = memberService.findById(membersId);
-        if (theUser == null) {
+        Members theMember = memberService.findMemberById(membersId);
+        if (theMember == null) {
             throw new RuntimeException(MyStrings.MEMBER.myString +
                     MyStrings.ID_NOT_FOUND.myString + membersId);
         }
-        memberService.deleteById(membersId);
-        return MyStrings.USER_DELETE.myString + membersId;
+        memberService.deleteMemberById(membersId);
+        return MyStrings.MEMBER_DELETE.myString + membersId;
     }
 }

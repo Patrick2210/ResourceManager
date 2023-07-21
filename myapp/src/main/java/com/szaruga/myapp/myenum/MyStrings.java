@@ -1,10 +1,12 @@
 package com.szaruga.myapp.myenum;
 
 public enum MyStrings {
-    SAVING_MEMBER("Saving member: "),
+    SAVING_MEMBER("Saving member - "),
     THE_ITEM("The item: "),
-    ITEM_DELETE("Deleted item id - "),
-    USER_DELETE("Deleted user id - "),
+    FINDING_MEMBER("Finding member by id - "),
+    ITEM_DELETE("Deleted item with id - "),
+    MEMBER_DELETE("Deleted member with id - "),
+    ASSOCIATED_ITEMS("Associated items - "),
     MEMBER("Member "),
     ITEM("Item"),
     DONE("Done!"),

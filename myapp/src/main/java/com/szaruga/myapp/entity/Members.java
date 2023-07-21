@@ -11,7 +11,6 @@ import java.util.List;
 public class Members {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
     @Column(name = "nickname")
     private String nickName;
@@ -25,8 +24,9 @@ public class Members {
     private LocalDateTime modificationDate;
     @Column(name = "user_type")
     private String userType;
-    @OneToMany(mappedBy = "theMember",
+    @OneToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "owner_id")
     private List<Items> items;
 
     public Members() {
@@ -124,8 +124,8 @@ public class Members {
                 '}';
     }
 
-    public void add(Items tempItems){
-        if (items == null){
+    public void add(Items tempItems) {
+        if (items == null) {
             items = new ArrayList<>();
         }
         items.add(tempItems);

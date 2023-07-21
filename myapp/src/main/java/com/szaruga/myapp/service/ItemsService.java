@@ -5,11 +5,11 @@ import com.szaruga.myapp.entity.Items;
 import java.util.List;
 
 public interface ItemsService {
-    List<Items> findAll();
+    List<Items> findAllItems();
 
-    Items findById(int theId);
+    Items findItemById(int theId);
 
-    Items save (Items theItems);
+    Items saveItem (Items theItems);
 
-    void deleteById(int theId);
+    void deleteItemById(int theId);
 }

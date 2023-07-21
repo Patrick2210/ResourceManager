@@ -20,12 +20,12 @@ public class ItemsRestController {
 
     @GetMapping("/items")
     public List<Items> findAll() {
-        return itemsService.findAll();
+        return itemsService.findAllItems();
     }
 
     @GetMapping("/items/{itemsId}")
     public Items getItems(@PathVariable int itemsId) {
-        Items theItems = itemsService.findById(itemsId);
+        Items theItems = itemsService.findItemById(itemsId);
         if (theItems == null) {
             throw new RuntimeException(MyStrings.ITEM.myString +
                     MyStrings.ID_NOT_FOUND.myString + itemsId);
@@ -36,17 +36,17 @@ public class ItemsRestController {
     @PostMapping("/items")
     public Items addItem(@RequestBody Items theItem) {
         theItem.setId(0);
-        return itemsService.save(theItem);
+        return itemsService.saveItem(theItem);
     }
 
     @DeleteMapping("/items/{itemsId}")
     public String deleteItem(@PathVariable int itemsId) {
-        Items theItem = itemsService.findById(itemsId);
+        Items theItem = itemsService.findItemById(itemsId);
         if (theItem == null) {
             throw new RuntimeException(MyStrings.ITEM.myString +
                     MyStrings.ID_NOT_FOUND.myString + itemsId);
         }
-        itemsService.deleteById(itemsId);
+        itemsService.deleteItemById(itemsId);
         return MyStrings.ITEM_DELETE.myString + itemsId;
     }
 }

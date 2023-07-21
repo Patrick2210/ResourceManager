@@ -5,6 +5,7 @@ import com.szaruga.myapp.entity.Members;
 import com.szaruga.myapp.myenum.MyStrings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,12 +21,12 @@ public class MemberServiceImpl implements MembersService {
     }
 
     @Override
-    public List<Members> findAll() {
+    public List<Members> findAllMembers() {
         return memberRepository.findAll();
     }
 
     @Override
-    public Members findById(int theId) {
+    public Members findMemberById(int theId) {
         Optional<Members> result = memberRepository.findById(theId);
         Members theMember;
 
@@ -39,12 +40,14 @@ public class MemberServiceImpl implements MembersService {
     }
 
     @Override
-    public Members save(Members theMember) {
+    @Transactional
+    public Members saveMember(Members theMember) {
         return memberRepository.save(theMember);
     }
 
     @Override
-    public void deleteById(int theId) {
+    @Transactional
+    public void deleteMemberById(int theId) {
         memberRepository.deleteById(theId);
     }
 }

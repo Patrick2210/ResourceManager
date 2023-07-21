@@ -5,6 +5,7 @@ import com.szaruga.myapp.entity.Items;
 import com.szaruga.myapp.myenum.MyStrings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,12 +21,12 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public List<Items> findAll() {
+    public List<Items> findAllItems() {
         return itemsRepository.findAll();
     }
 
     @Override
-    public Items findById(int theId) {
+    public Items findItemById(int theId) {
         Optional<Items> result = itemsRepository.findById(theId);
         Items theItem;
 
@@ -39,12 +40,14 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public Items save(Items theItem) {
+    @Transactional
+    public Items saveItem(Items theItem) {
         return itemsRepository.save(theItem);
     }
 
     @Override
-    public void deleteById(int theId) {
+    @Transactional
+    public void deleteItemById(int theId) {
         itemsRepository.deleteById(theId);
     }
 }

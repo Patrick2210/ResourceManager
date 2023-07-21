@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public class Items {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
     @Column(name = "item_name")
     private String itemName;
@@ -26,7 +25,7 @@ public class Items {
     private String metaData;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    //@JoinColumn(name = "owner_id")
+
     private Members theMember;
 
     public Items() {

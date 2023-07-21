@@ -5,13 +5,11 @@ import com.szaruga.myapp.entity.Members;
 import java.util.List;
 
 public interface MembersService {
-    List<Members> findAll();
+    List<Members> findAllMembers();
 
-    Members findById(int theId);
+    Members findMemberById(int theId);
 
-    Members save(Members theEmployee);
+    Members saveMember(Members theMember);
 
-    void deleteById(int theId);
-
-    //TODO implement method() to show all record from item entity that belongs to member
+    void deleteMemberById(int theId);
 }
