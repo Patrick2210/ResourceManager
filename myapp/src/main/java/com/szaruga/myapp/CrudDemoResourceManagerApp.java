@@ -27,9 +27,9 @@ public class CrudDemoResourceManagerApp {
             /**
              *createMemberWithItems(itemsService, memberService);
              * deleteMemberWithId(memberService);
-             *
+             * findMemberWithItems(memberService);
              */
-            findMemberWithItems(memberService);
+
         };
     }
 

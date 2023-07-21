@@ -1,5 +1,6 @@
 package com.szaruga.myapp.rest;
 
+import com.szaruga.myapp.entity.Items;
 import com.szaruga.myapp.entity.Members;
 import com.szaruga.myapp.myenum.MyStrings;
 import com.szaruga.myapp.service.MembersService;
@@ -49,5 +50,11 @@ public class MembersRestController {
         }
         memberService.deleteMemberById(membersId);
         return MyStrings.MEMBER_DELETE.myString + membersId;
+    }
+
+    @GetMapping("/members/{membersId}/items")
+    public Object getMemberWithItems(@PathVariable int membersId) {
+        Members theMember = memberService.findMemberById(membersId);
+        return  theMember.getItems();
     }
 }
