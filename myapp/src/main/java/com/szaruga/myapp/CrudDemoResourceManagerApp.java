@@ -1,7 +1,5 @@
 package com.szaruga.myapp;
 
-import com.szaruga.myapp.dao.ItemsRepository;
-import com.szaruga.myapp.dao.MembersRepository;
 import com.szaruga.myapp.entity.Items;
 import com.szaruga.myapp.entity.Members;
 import com.szaruga.myapp.myenum.MyStrings;
@@ -24,11 +22,6 @@ public class CrudDemoResourceManagerApp {
     @Bean
     public CommandLineRunner commandLineRunner(ItemsServiceImpl itemsService, MemberServiceImpl memberService) {
         return runner -> {
-            /**
-             *createMemberWithItems(itemsService, memberService);
-             * deleteMemberWithId(memberService);
-             * findMemberWithItems(memberService);
-             */
 
         };
     }

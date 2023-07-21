@@ -1,6 +1,5 @@
 package com.szaruga.myapp.rest;
 
-import com.szaruga.myapp.entity.Items;
 import com.szaruga.myapp.entity.Members;
 import com.szaruga.myapp.myenum.MyStrings;
 import com.szaruga.myapp.service.MembersService;
@@ -55,6 +54,6 @@ public class MembersRestController {
     @GetMapping("/members/{membersId}/items")
     public Object getMemberWithItems(@PathVariable int membersId) {
         Members theMember = memberService.findMemberById(membersId);
-        return  theMember.getItems();
+        return theMember.getItems();
     }
 }
