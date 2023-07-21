@@ -12,4 +12,6 @@ public interface MembersService {
     Members save(Members theEmployee);
 
     void deleteById(int theId);
+
+    //TODO implement method() to show all record from item entity that belongs to member
 }

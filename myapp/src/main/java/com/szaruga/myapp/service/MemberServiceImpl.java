@@ -2,7 +2,7 @@ package com.szaruga.myapp.service;
 
 import com.szaruga.myapp.dao.MembersRepository;
 import com.szaruga.myapp.entity.Members;
-import com.szaruga.myapp.myenum.MyEnumString;
+import com.szaruga.myapp.myenum.MyStrings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +32,8 @@ public class MemberServiceImpl implements MembersService {
         if (result.isPresent()) {
             theMember = result.get();
         } else {
-            throw new RuntimeException(MyEnumString.MEMBER.myString +
-                    MyEnumString.ID_NOT_FOUND.myString + theId);
+            throw new RuntimeException(MyStrings.MEMBER.myString +
+                    MyStrings.ID_NOT_FOUND.myString + theId);
         }
         return theMember;
     }

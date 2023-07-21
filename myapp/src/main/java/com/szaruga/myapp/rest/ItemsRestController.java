@@ -1,7 +1,7 @@
 package com.szaruga.myapp.rest;
 
 import com.szaruga.myapp.entity.Items;
-import com.szaruga.myapp.myenum.MyEnumString;
+import com.szaruga.myapp.myenum.MyStrings;
 import com.szaruga.myapp.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +27,8 @@ public class ItemsRestController {
     public Items getItems(@PathVariable int itemsId) {
         Items theItems = itemsService.findById(itemsId);
         if (theItems == null) {
-            throw new RuntimeException(MyEnumString.ITEM.myString +
-                    MyEnumString.ID_NOT_FOUND.myString + itemsId);
+            throw new RuntimeException(MyStrings.ITEM.myString +
+                    MyStrings.ID_NOT_FOUND.myString + itemsId);
         }
         return theItems;
     }
@@ -43,11 +43,10 @@ public class ItemsRestController {
     public String deleteItem(@PathVariable int itemsId) {
         Items theItem = itemsService.findById(itemsId);
         if (theItem == null) {
-            throw new RuntimeException(MyEnumString.ITEM.myString +
-                    MyEnumString.ID_NOT_FOUND.myString + itemsId);
+            throw new RuntimeException(MyStrings.ITEM.myString +
+                    MyStrings.ID_NOT_FOUND.myString + itemsId);
         }
         itemsService.deleteById(itemsId);
-        return MyEnumString.ITEM_DELETE.myString + itemsId;
+        return MyStrings.ITEM_DELETE.myString + itemsId;
     }
-
 }

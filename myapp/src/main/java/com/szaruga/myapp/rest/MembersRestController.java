@@ -1,7 +1,7 @@
 package com.szaruga.myapp.rest;
 
 import com.szaruga.myapp.entity.Members;
-import com.szaruga.myapp.myenum.MyEnumString;
+import com.szaruga.myapp.myenum.MyStrings;
 import com.szaruga.myapp.service.MembersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,8 @@ public class MembersRestController {
     public Members getMember(@PathVariable int membersId) {
         Members theMember = memberService.findById(membersId);
         if (theMember == null) {
-            throw new RuntimeException(MyEnumString.MEMBER.myString +
-                    MyEnumString.ID_NOT_FOUND.myString + membersId);
+            throw new RuntimeException(MyStrings.MEMBER.myString +
+                    MyStrings.ID_NOT_FOUND.myString + membersId);
         }
         return theMember;
     }
@@ -44,10 +44,10 @@ public class MembersRestController {
     public String deleteMember(@PathVariable int membersId) {
         Members theUser = memberService.findById(membersId);
         if (theUser == null) {
-            throw new RuntimeException(MyEnumString.MEMBER.myString +
-                    MyEnumString.ID_NOT_FOUND.myString + membersId);
+            throw new RuntimeException(MyStrings.MEMBER.myString +
+                    MyStrings.ID_NOT_FOUND.myString + membersId);
         }
         memberService.deleteById(membersId);
-        return MyEnumString.USER_DELETE.myString + membersId;
+        return MyStrings.USER_DELETE.myString + membersId;
     }
 }

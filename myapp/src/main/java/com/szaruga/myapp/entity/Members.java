@@ -3,6 +3,8 @@ package com.szaruga.myapp.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "members")
@@ -23,16 +25,19 @@ public class Members {
     private LocalDateTime modificationDate;
     @Column(name = "user_type")
     private String userType;
+    @OneToMany(mappedBy = "theMember",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Items> items;
 
     public Members() {
     }
 
     public Members(String nickName,
-                 String firstName,
-                 String lastName,
-                 LocalDateTime creationDate,
-                 LocalDateTime modificationDate,
-                 String userType) {
+                   String firstName,
+                   String lastName,
+                   LocalDateTime creationDate,
+                   LocalDateTime modificationDate,
+                   String userType) {
 
         this.nickName = nickName;
         this.firstName = firstName;
@@ -70,6 +75,10 @@ public class Members {
         return userType;
     }
 
+    public List<Items> getItems() {
+        return items;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -98,6 +107,10 @@ public class Members {
         this.userType = userType;
     }
 
+    public void setItems(List<Items> items) {
+        this.items = items;
+    }
+
     @Override
     public String toString() {
         return "Members{" +
@@ -109,5 +122,12 @@ public class Members {
                 ", modificationDate=" + modificationDate +
                 ", userType='" + userType + '\'' +
                 '}';
+    }
+
+    public void add(Items tempItems){
+        if (items == null){
+            items = new ArrayList<>();
+        }
+        items.add(tempItems);
     }
 }
