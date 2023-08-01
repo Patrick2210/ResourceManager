@@ -53,7 +53,7 @@ class MembersRestControllerTest {
     }
 
     @Test
-    void findAll() throws Exception {
+    void findAll()  {
 
     }
 
