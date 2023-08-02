@@ -7,11 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 class MyappApplicationTests {
-    private MockMvc mockMvc;
-    MemberServiceImpl memberService;
-
     @Test
     void contextLoads() {
     }
-
 }
