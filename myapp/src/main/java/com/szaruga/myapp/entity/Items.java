@@ -122,4 +122,68 @@ public class Items {
                 ", metaData='" + metaData + '\'' +
                 '}';
     }
+
+    public static class Builder {
+        private int id;
+        private String itemName;
+        private LocalDateTime creationDate;
+        private LocalDateTime modificationDate;
+        private Integer ownerId;
+        private String objectType;
+        private String metaData;
+
+        public Builder() {
+        }
+
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder itemName(String itemName) {
+            this.itemName = itemName;
+            return this;
+        }
+
+        public Builder creationDate(LocalDateTime creationDate) {
+            this.creationDate = creationDate;
+            return this;
+        }
+
+        public Builder modificationDate(LocalDateTime modificationDate) {
+            this.modificationDate = modificationDate;
+            return this;
+        }
+
+        public Builder ownerId(Integer ownerId) {
+            this.ownerId = ownerId;
+            return this;
+        }
+
+        public Builder objectType(String objectType) {
+            this.objectType = objectType;
+            return this;
+        }
+
+        public Builder metaData(String metaData) {
+            this.metaData = metaData;
+            return this;
+        }
+
+        public Items build() {
+            Items items = new Items();
+            items.id = this.id;
+            items.itemName = this.itemName;
+            items.creationDate = this.creationDate;
+            items.modificationDate = this.modificationDate;
+            items.ownerId = this.ownerId;
+            items.objectType = this.objectType;
+            items.metaData = this.metaData;
+            return items;
+        }
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
 }

@@ -1,4 +1,4 @@
-package com.szaruga.myapp.rest;
+package com.szaruga.myapp.security;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,17 +6,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import static com.szaruga.myapp.myenum.MyStringsTest.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 
-
 @SpringBootTest
 @AutoConfigureMockMvc
-class MembersRestControllerTest {
+class DemoSecurityConfigTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -50,22 +48,5 @@ class MembersRestControllerTest {
                         .with(httpBasic(ADMIN.myString, ADMIN_PASSWORD.myString)))
                 .andDo(print())
                 .andExpect(status().isOk());
-    }
-
-    @Test
-    void findAll()  {
-
-    }
-
-    @Test
-    void addMember() {
-    }
-
-    @Test
-    void deleteMember() {
-    }
-
-    @Test
-    void getMemberWithItems() {
     }
 }

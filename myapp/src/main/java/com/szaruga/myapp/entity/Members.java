@@ -130,4 +130,68 @@ public class Members {
         }
         items.add(tempItems);
     }
+
+    public static class Builder {
+        private int id;
+        private String nickName;
+        private String firstName;
+        private String lastName;
+        private LocalDateTime creationDate;
+        private LocalDateTime modificationDate;
+        private String userType;
+
+        public Builder() {
+        }
+
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder nickName(String nickName) {
+            this.nickName = nickName;
+            return this;
+        }
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder creationDate(LocalDateTime creationDate) {
+            this.creationDate = creationDate;
+            return this;
+        }
+
+        public Builder modificationDate(LocalDateTime modificationDate) {
+            this.modificationDate = modificationDate;
+            return this;
+        }
+
+        public Builder userType(String userType) {
+            this.userType = userType;
+            return this;
+        }
+
+        public Members build() {
+            Members members = new Members();
+            members.id = this.id;
+            members.nickName = this.nickName;
+            members.firstName = this.firstName;
+            members.lastName = this.lastName;
+            members.creationDate = this.creationDate;
+            members.modificationDate = this.modificationDate;
+            members.userType = this.userType;
+            return members;
+        }
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
 }
